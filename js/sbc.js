@@ -220,8 +220,12 @@ StackedBarChart.prototype.start = function(){
     vis.group
         .transition()
         .duration(1000)
-        .attr("transform", "translate(" + vis.margin.left + "," +
-            (310) + ")");
+		.attr("transform", function() {
+			if ($(window).height() <= 676) {
+				return "translate(" + vis.margin.left + "," + (timeline.height + 100) + ")"; }
+			else {
+				return "translate(" + vis.margin.left + "," + (timeline.height + 180) + ")"; }
+		});
 
     vis.svg.selectAll(".bar")
         .transition()
@@ -232,13 +236,13 @@ StackedBarChart.prototype.start = function(){
         .delay(500)
         .duration(1000)
         .attr("fill", "gray");
-
+	d3.select(".gauges-subtitle").attr("x", timeline.width + 80);
     gauges.group
         .transition()
         .delay(500)
         .duration(1000)
-        .attr("transform", "translate(" + ($(window).width()*.37) + "," +
-            (-230) + ") scale(0.8)");
+        .attr("transform", "translate(" + (timeline.width + 80) + "," +
+            (-vis.height - 100) + ") scale(0.8)");
 
     timeline.selectionChanged(sbc.brush.extent());
     timeline.group.transition().delay(1000).duration(1000).attr("opacity", 1);

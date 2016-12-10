@@ -222,7 +222,7 @@ Gauges.prototype.initVis = function() {
         .text("Civilian Deaths");
     vis.svg.append("text")
         .attr("class", "gauge-titles gauge-subtitle")
-        .attr("x", $(window).width()*.525)
+        // .attr("x", $(window).width()*.525)
         .attr("y", 50)
         .attr("fill", "white")
         .text("Jan '89 to Jan '90")

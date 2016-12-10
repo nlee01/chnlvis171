@@ -1,0 +1,273 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>CHNLvis</title>
+
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/nv.d3.css">
+
+	<script src="js/jquery.min.js"></script>
+	<!--<script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>-->
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/queue.min.js"></script>
+	<script src="js/topojson.js"></script>
+	<script src="js/d3.min.js"></script>
+	<script src="js/d3plus.min.js"></script>
+	<script src="js/d3.tip.js"></script>
+	<script src="js/d3.geo.js"></script>
+    <script src="js/nv.d3.js"></script>
+    <script src="js/nv.d3.js.map"></script>
+	<script src="js/colorbrewer.js"></script>
+	<script src="js/smooth-scroll.js"></script>
+	<script src="js/player.min.js"></script>
+	<script src="js/liquidFillGauge.js"></script>
+	<script src="js/main.js"></script>
+	<script src="js/vis-line.js"></script>
+    <script src="js/vis-sac.js"></script>
+	<script src="js/sbc.js"></script>
+	<script src="js/sbc-timeline.js"></script>
+	<script src="js/sbc-gauges.js"></script>
+    <script src="js/sbc-setup.js"></script>
+    <script src="js/clicks.js"></script>
+
+	<!--<script src="js/globevis.js"></script>-->
+</head>
+<body>
+<div class="navbar-xs">
+    <div class="navbar-primary">
+        <nav class="navbar navbar-static-top" role="navigation">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-8">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a id="nav-s1" class="navbar-brand" onclick="fire('#s1')">HOME</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-8">
+                <ul class="nav navbar-nav">
+                    <li><a id="nav-s2" onclick="fire('#s2')">Video</a></li>
+                    <li><a id="nav-s3" onclick="fire('#s3')">Intro</a></li>
+                    <li><a id="nav-s4" onclick="fire('#s4')">Timeline</a></li>
+                    <li><a id="nav-s5" onclick="fire('#s5')">Map</a></li>
+                    <li><a id="nav-s6" onclick="fire('#s6')">Regions</a></li>
+                    <li><a id="nav-s7" onclick="fire('#s7')">Casualties</a></li>
+                    <li><a id="nav-s8" onclick="fire('#s8')">Conclusion</a></li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </nav>
+    </div>
+</div>
+<div class="loading">
+    <div class="title">
+        <h1>Violence on the Global Stage</h1>
+        <img src="img/up-arrow-black.png">
+        <p>loading</p>
+    </div>
+</div>
+<section id="s1" class="section">
+    <video id="title-video" autoplay loop poster="img/news-poster.jpg">
+        <source src="img/news.mp4" type="video/mp4"/>
+    </video>
+    <div class="title">
+        <h1>Violence on the Global Stage</h1>
+        <img src="img/up-arrow.png">
+        <p>start</p>
+    </div>
+</section>
+<section id="s2" class="section">
+    <div data-vimeo-url="https://vimeo.com/194295448" id="player"></div>
+    <div class="title">
+        <h1>What Have You Seen?</h1>
+        <img src="img/up-arrow-2.png">
+        <p>next</p>
+    </div>
+    <script>
+        var options = {
+            height: $(window).height(),
+            loop: false,
+            autoplay: false
+        };
+        var player = new Vimeo.Player('player', options);
+        player.on('timeupdate', function(data) {
+            if (data.seconds > 36) {
+                player.pause();
+                $(".title").find(":header").css("opacity", 1);
+                setTimeout(function() { $(".title").find("img, p").css("opacity", 1); }, 1000)}
+        });
+        $(window).scrollLeft($(window).width()/2);
+    </script>
+</section>
+<section id="s3" class="section">
+    <div class="buffer">
+        <div class="row text-center inter">
+            <div class="col-md-12">
+                <h1>Is this really what's happening?</h1>
+                <br>
+                <h3>Media coverage of terrorism ‘leads to further violence’ - The Guardian</h3>
+                <p>While only 6% of crime in Great Britain is violent crime, a study of 10 popular British dailies showed that more than 2/3 of the crime news is devoted to violent crime - DART center for Journalism and Trauma</p>
+                <br>
+                <h3>Media coverage of terrorism ‘leads to further violence’ - The Guardian</h3>
+                <p>While only 6% of crime in Great Britain is violent crime, a study of 10 popular British dailies showed that more than 2/3 of the crime news is devoted to violent crime - DART center for Journalism and Trauma</p>
+            </div>
+            <div class="prev-lg inline">
+                <img src="img/prev-large.png">
+                <div class="blinker">
+                    <img src="img/prev-large-glow.png">
+                </div>
+            </div>
+            <div class="next-lg inline">
+                <img src="img/next-large.png">
+                <div class="blinker">
+                    <img src="img/next-large-glow.png">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div id="q4" class="question">
+    <div class="title">
+        <h1>What's Happened?</h1>
+        <img src="img/up-arrow.png">
+        <br>
+    </div>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi quis nibh egestas odio lobortis accumsan. Ut et libero felis. Integer ullamcorper, sapien at tempor vestibulum, neque nibh fringilla felis, ut porttitor ligula orci accumsan ligula. Sed a vehicula enim, at vestibulum quam. Donec euismod aliquam enim. Nulla facilisi.</p>
+</div>
+<section id="s4" class="section">
+    <div id="linechart"></div>
+    <div class="prev-lg inline">
+        <img src="img/prev-large.png">
+        <div class="blinker">
+            <img src="img/prev-large-glow.png">
+        </div>
+    </div>
+    <div class="next-lg inline">
+        <img src="img/next-large.png">
+        <div class="blinker">
+            <img src="img/next-large-glow.png">
+        </div>
+    </div>
+</section>
+<div id="q5" class="question">
+    <div class="title">
+        <h1>Where in the World?</h1>
+        <img src="img/up-arrow.png">
+        <br>
+    </div>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi quis nibh egestas odio lobortis accumsan. Ut et libero felis. Integer ullamcorper, sapien at tempor vestibulum, neque nibh fringilla felis, ut porttitor ligula orci accumsan ligula. Sed a vehicula enim, at vestibulum quam. Donec euismod aliquam enim. Nulla facilisi.</p>
+</div>
+<section id="s5" class="section">
+    <div class="prev-lg inline">
+        <img src="img/prev-large.png">
+        <div class="blinker">
+            <img src="img/prev-large-glow.png">
+        </div>
+    </div>
+    <div class="next-lg inline">
+        <img src="img/next-large.png">
+        <div class="blinker">
+            <img src="img/next-large-glow.png">
+        </div>
+    </div>
+</section>
+<div id="q6" class="question">
+    <div class="title">
+        <h1>In What Regions?</h1>
+        <img src="img/up-arrow.png">
+        <br>
+    </div>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi quis nibh egestas odio lobortis accumsan. Ut et libero felis. Integer ullamcorper, sapien at tempor vestibulum, neque nibh fringilla felis, ut porttitor ligula orci accumsan ligula. Sed a vehicula enim, at vestibulum quam. Donec euismod aliquam enim. Nulla facilisi.</p>
+</div>
+<section id="s6" class="section">
+    <div class="buffer">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Deaths by Region</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi quis nibh egestas odio lobortis accumsan. Ut et libero felis. Integer ullamcorper, sapien at tempor vestibulum, neque nibh fringilla felis, ut porttitor ligula orci accumsan ligula. Sed a vehicula enim, at vestibulum quam. Donec euismod aliquam enim. Nulla facilisi. Vivamus nec risus molestie, auctor lorem quis, accumsan sapien. Ut dignissim, ligula vel rutrum mollis, mi sem fermentum orci, ac volutpat tellus sapien et risus. Nunc lobortis erat in nulla fermentum, quis.</p>
+            </div>
+        </div>
+    </div>
+    <div id="stackedareachart"></div>
+    <div class="prev-lg inline">
+        <img src="img/prev-large.png">
+        <div class="blinker">
+            <img src="img/prev-large-glow.png">
+        </div>
+    </div>
+    <div class="next-lg inline">
+        <img src="img/next-large.png">
+        <div class="blinker">
+            <img src="img/next-large-glow.png">
+        </div>
+    </div>
+</section>
+<div id="q7" class="question">
+    <div class="title">
+        <h1>Who's Been Affected?</h1>
+        <img src="img/up-arrow.png">
+        <br>
+    </div>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi quis nibh egestas odio lobortis accumsan. Ut et libero felis. Integer ullamcorper, sapien at tempor vestibulum, neque nibh fringilla felis, ut porttitor ligula orci accumsan ligula. Sed a vehicula enim, at vestibulum quam. Donec euismod aliquam enim. Nulla facilisi.</p>
+</div>
+<section id="s7" class="section">
+    <div class="buffer">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Casualty Breakdown</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi quis nibh egestas odio lobortis accumsan. Ut et libero felis. Integer ullamcorper, sapien at tempor vestibulum, neque nibh fringilla felis, ut porttitor ligula orci accumsan ligula. Sed a vehicula enim, at vestibulum quam. Donec euismod aliquam enim. Nulla facilisi. Vivamus nec risus molestie, auctor lorem quis, accumsan sapien. Ut dignissim, ligula vel rutrum mollis, mi sem fermentum orci, ac volutpat tellus sapien et risus. Nunc lobortis erat in nulla fermentum, quis.</p>
+            </div>
+        </div>
+    </div>
+    <div id="gauges"></div>
+    <div id="timeline"></div>
+    <div id="stackedbarchart"></div>
+    <div class="prev-lg inline">
+        <img src="img/prev-large.png">
+        <div class="blinker">
+            <img src="img/prev-large-glow.png">
+        </div>
+    </div>
+    <div class="next-lg inline">
+        <img src="img/next-large.png">
+        <div class="blinker">
+            <img src="img/next-large-glow.png">
+        </div>
+    </div>
+</section>
+<section id="s8" class="section">
+    <div class="buffer">
+        <div class="row text-center inter">
+            <div class="col-md-12">
+                <h1>Is this really what's happening?</h1>
+                <br>
+                <h3>Media coverage of terrorism ‘leads to further violence’ - The Guardian</h3>
+                <p>While only 6% of crime in Great Britain is violent crime, a study of 10 popular British dailies showed that more than 2/3 of the crime news is devoted to violent crime - DART center for Journalism and Trauma</p>
+                <br>
+                <h3>Media coverage of terrorism ‘leads to further violence’ - The Guardian</h3>
+                <p>While only 6% of crime in Great Britain is violent crime, a study of 10 popular British dailies showed that more than 2/3 of the crime news is devoted to violent crime - DART center for Journalism and Trauma</p>
+            </div>
+            <div class="prev-lg inline">
+                <img src="img/prev-large.png">
+                <div class="blinker">
+                    <img src="img/prev-large-glow.png">
+                </div>
+            </div>
+            <div class="next-lg inline">
+                <img src="img/next-large.png">
+                <div class="blinker">
+                    <img src="img/next-large-glow.png">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>

@@ -1,7 +1,7 @@
 // LANDING.JS FOR LANDING PAGE MANIPULATION
 $(document).ready(function() {
-    fire("#s1");
-    for (var i = 1; i <= 8; i++) {
+    fire("#s2");
+    for (var i = 1; i <= 9; i++) {
         var section = "#s" + parseInt(i);
         bind(section);
     }
@@ -13,13 +13,13 @@ function bind(section) {
         $(section).find(".title").click(function() { fire(next); });
     }
     $(section).find(".prev-lg").click(function() { fire(prev); });
-    if (section == "#s8") { $(section).find(".next-lg").click(function() { fire("#s1"); }); }
+    if (section == "#s9") { $(section).find(".next-lg").click(function() { fire("#s1"); }); }
     else { $(section).find(".next-lg").click(function() { fire(next); }); }
 }
 function fire(section) {
     var q = "#q" + section.substring(2, section.length);
     $(".section").fadeOut(1000);
-    if (section != "#s1" && section != "#s2" && section != "#s3" && section != "#s8") {
+    if (section != "#s1" && section != "#s2" && section != "#s3" && section != "#s8" && section != "#s9") {
         $(q).fadeIn(1000);
         $(q).click(function() { $(q).fadeOut(1000); $(section).fadeIn(1000); go(section); });
     }

@@ -12,7 +12,6 @@
 	<link rel="stylesheet" href="css/nv.d3.css">
 
 	<script src="js/jquery.min.js"></script>
-	<!--<script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>-->
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/queue.min.js"></script>
 	<script src="js/topojson.js"></script>
@@ -34,7 +33,6 @@
 	<script src="js/sbc-gauges.js"></script>
     <script src="js/sbc-setup.js"></script>
     <script src="js/clicks.js"></script>
-
 	<!--<script src="js/globevis.js"></script>-->
 </head>
 <body>
@@ -61,6 +59,7 @@
                     <li><a id="nav-s6" onclick="fire('#s6')">Regions</a></li>
                     <li><a id="nav-s7" onclick="fire('#s7')">Casualties</a></li>
                     <li><a id="nav-s8" onclick="fire('#s8')">Conclusion</a></li>
+                    <li><a id="nav-s9" onclick="fire('#s9')">Sources</a></li>
                 </ul>
             </div><!-- /.navbar-collapse -->
         </nav>
@@ -84,7 +83,7 @@
     </div>
 </section>
 <section id="s2" class="section">
-    <div data-vimeo-url="https://vimeo.com/194295448" id="player"></div>
+    <div data-vimeo-url="https://vimeo.com/195129609" id="player"></div>
     <div class="title">
         <h1>What Have You Seen?</h1>
         <img src="img/up-arrow-2.png">
@@ -98,12 +97,11 @@
         };
         var player = new Vimeo.Player('player', options);
         player.on('timeupdate', function(data) {
-            if (data.seconds > 36) {
-                player.pause();
+            if (data.seconds > 40) {
                 $(".title").find(":header").css("opacity", 1);
-                setTimeout(function() { $(".title").find("img, p").css("opacity", 1); }, 1000)}
+                setTimeout(function() { $(".title").find("img, p").css("opacity", 1); }, 1000);
+            }
         });
-        $(window).scrollLeft($(window).width()/2);
     </script>
 </section>
 <section id="s3" class="section">
@@ -253,6 +251,28 @@
                 <br>
                 <h3>Media coverage of terrorism ‘leads to further violence’ - The Guardian</h3>
                 <p>While only 6% of crime in Great Britain is violent crime, a study of 10 popular British dailies showed that more than 2/3 of the crime news is devoted to violent crime - DART center for Journalism and Trauma</p>
+            </div>
+            <div class="prev-lg inline">
+                <img src="img/prev-large.png">
+                <div class="blinker">
+                    <img src="img/prev-large-glow.png">
+                </div>
+            </div>
+            <div class="next-lg inline">
+                <img src="img/next-large.png">
+                <div class="blinker">
+                    <img src="img/next-large-glow.png">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="s9" class="section">
+    <div class="buffer">
+        <div class="row text-center inter">
+            <div class="col-md-12">
+                <h1>Sources</h1>
+                <p></p>
             </div>
             <div class="prev-lg inline">
                 <img src="img/prev-large.png">

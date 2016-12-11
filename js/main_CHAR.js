@@ -1,6 +1,5 @@
 // TOTAL BEST_EST = 1898724
 
-
 // GLOBAL DATA VARIABLES
 var allCSV, allJSON;
 
@@ -25,25 +24,25 @@ queue()
             d.best_est = +d.best_est;
             d.date_start = format.parse(d.date_start);
         });
+
         // // SORT CSV DATA BY TIME
         csv.sort(function(a, b) {
             return a.date_start - b.date_start;
         });
         allCSV = csv.slice(0);
         allJSON = json;
-        // console.log(allJSON);
-
-        // console.log("--> allCSV:");
-        // console.log(allCSV);
-        // console.log("--> allJSON:");
-        // console.log(allJSON);
-        // console.log("--> forceData:");
-        // console.log(forceData);
+        console.log("--> allCSV:");
+        console.log(allCSV);
+        console.log("--> allJSON:");
+        console.log(allJSON);
         allVisualizations();
     });
 
 function allVisualizations() {
     // var barchart = new BarChart("barchart", allCSV);
-    var stackedareachart = new StackedAreaChart("stackedareachart", allCSV);
-    // var globevis = new GlobeVis("globe", allJSON);
+
+    // console.log("allvisafterglobe");
+    var globevis = new GlobeVis("globe", allJSON, allCSV);
+    // var stackedareachart = new StackedAreaChart("stackedareachart", allCSV);
+    // $(".loading").fadeOut(2000);
 }

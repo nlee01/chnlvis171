@@ -33,7 +33,7 @@
 	<script src="js/sbc-gauges.js"></script>
     <script src="js/sbc-setup.js"></script>
     <script src="js/clicks.js"></script>
-	<!--<script src="js/globevis.js"></script>-->
+	<script src="js/map.js"></script>
 </head>
 <body>
 <div class="navbar-xs">
@@ -168,9 +168,30 @@
         <img src="img/up-arrow.png">
         <br>
     </div>
-    <p></p>
+    <p>Duis tempus fringilla arcu ac faucibus. Morbi tempus odio sed orci feugiat placerat. Aenean tempus nisl ex, quis mollis tellus placerat ut. Phasellus at quam laoreet sem egestas sagittis ac vel elit. Pellentesque elementum, nisl et consectetur dictum, nulla leo mollis velit, sed tempor quam libero sit amet arcu. Praesent nec elit egestas, dapibus urna vel, interdum nisl. Cras eu egestas ipsum.</p>
 </div>
 <section id="s5" class="section">
+    <div class="buffer">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Where in the World?</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nec iaculis dolor, in ornare felis. Sed interdum rhoncus sapien interdum efficitur. Vivamus accumsan, quam eget eleifend accumsan, ante leo aliquam nisi, et dictum dolor lectus non lacus. Nam ullamcorper neque eget odio volutpat, eget scelerisque ex porttitor. Sed tempor tempor gravida. Praesent rhoncus a sapien a rutrum. Mauris efficitur varius neque, sed porttitor mauris lobortis vel. Suspendisse potenti. Duis et neque at ipsum consequat blandit. Vestibulum facilisis at nisi ac. <i><span class="blinker">Click Play to begin.</span></i></p>
+            </div>
+        </div>
+    </div>
+    <div id="map"></div>
+    <div class="zoom-buttons">
+        <div class="player text-center">
+            <button type="button" class="btn" data-zoom="+1">+</button>
+            <button type="button" class="btn" data-zoom="-1">-</button>
+        </div>
+    </div>
+    <div class="map-buttons">
+        <div class="player text-center">
+            <button type="button" class="btn" id="play">Play</button>
+            <button type="button" class="btn" id="restart">Restart</button>
+        </div>
+    </div>
     <div class="prev-lg inline">
         <img src="img/prev-large.png">
         <div class="blinker">
@@ -267,6 +288,7 @@
                     <h3>"Higher levels of exposure to news compounds the effect of <span style="color: red">[the public's] political positions.</span>"</h3>
                     <p>Those with higher exposure to U.S conservative news sources were <span style="color: red">more likely to misperceive and support the Iraq War</span>, while those with higher exposure to liberal news sources were less likely to misperceive and support the Iraq War - "Misperceptions, Media, and The Iraq War," a study by the University of Maryland</p>
                 </div>
+            </div>
             <div class="prev-lg inline">
                 <img src="img/prev-large.png">
                 <div class="blinker">

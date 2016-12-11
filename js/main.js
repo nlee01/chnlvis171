@@ -4,7 +4,7 @@
 var allCSV, allJSON;
 
 // GLOBAL VIS VARIABLES
-var stackedareachart, linechart, globevis;
+var stackedareachart, linechart, map;
 
 // Use the Queue.js library to read two files
 var format = d3.time.format("%m/%d/%Y");
@@ -43,7 +43,7 @@ function allVisualizations() {
     // STACKED BAR CHART IS ALREADY LOADED IN SBC-SETUP.JS
 
     linechart = new LineChart("linechart", allCSV);
-    // globevis = new GlobeVis("globe", allJSON);
+    map = new GlobeVis("map", allJSON, allCSV);
     stackedareachart = new StackedAreaChart("stackedareachart", allCSV);
 
     // Initialize stackedbarchart and timeline with sbcGo()

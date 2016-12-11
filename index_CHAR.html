@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>CHNLvis</title>
+
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/style.css">
+	<!--Google Fonts: Josefin Slab & Libre Franklin-->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Josefin+Slab|Libre+Franklin">
+	<!-- Load JS libraries -->
+
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/queue.min.js"></script>
+	<script src="js/topojson.js"></script>
+	<script src="js/d3.min.js"></script>
+	<script src="js/d3.tip.js"></script>
+	<script src="js/colorbrewer.js"></script>
+	<script src="js/smooth-scroll.js"></script>
+	<!--<script src="js/main.js"></script>-->
+	<script src="js/main_CHAR.js"></script>
+	<!--<script src="js/landing.js"></script>-->
+	<!--<script src="js/vis-sac.js"></script>-->
+	<!--<script src="js/vis-sac-timeline.js"></script>-->
+	<script src="js/map_CHAR.js"></script>
+	<script>
+		$(window).load(function() {
+			// Animate loader off screen
+//            $(".se-pre-con").fadeOut("slow");
+			$("#main").show();
+		});
+	</script>
+
+</head>
+<body>
+<div class="navbar-xs">
+    <div class="navbar-primary">
+        <nav class="navbar navbar-static-top" role="navigation">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-8">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a id="nav-s1" class="navbar-brand" onclick="fire('#s1')">HOME</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-8">
+                <ul class="nav navbar-nav">
+                    <li><a id="nav-s2" onclick="fire('#s2')">Video</a></li>
+                    <li><a id="nav-s3" onclick="fire('#s3')">Intro</a></li>
+                    <li><a id="nav-s4" onclick="fire('#s4')">Timeline</a></li>
+                    <li><a id="nav-s5" onclick="fire('#s5')">Map</a></li>
+                    <li><a id="nav-s6" onclick="fire('#s6')">Regions</a></li>
+                    <li><a id="nav-s7" onclick="fire('#s7')">Casualties</a></li>
+                    <li><a id="nav-s8" onclick="fire('#s8')">Conclusion</a></li>
+                    <li><a id="nav-s9" onclick="fire('#s9')">Sources</a></li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </nav>
+    </div>
+</div>
+<section id="s5">
+    <div class="zoom-buttons">
+        <div class="player text-center">
+            <button type="button" class="btn" data-zoom="+1">+</button>
+            <button type="button" class="btn" data-zoom="-1">-</button>
+        </div>
+    </div>
+	<div id="globe"></div>
+    <div class="map-buttons">
+        <div class="player text-center">
+            <button type="button" class="btn" id="play">Play</button>
+            <button type="button" class="btn" id="restart">Restart</button>
+        </div>
+    </div>
+</section>
+</body>
+</html>

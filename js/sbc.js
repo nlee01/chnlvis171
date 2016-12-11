@@ -173,8 +173,8 @@ StackedBarChart.prototype.updateVis = function(){
         .attr("class", "start-vis")
         .attr("width", 100)
         .attr("height", 60)
-        .attr("x", vis.width/2 - 50)
-        .attr("y", -200)
+        .attr("x", 100)
+        .attr("y", -vis.height*1.5)
         .attr("stroke", "white")
         .attr("stroke-width", 2)
         .on("click", function() {
@@ -190,8 +190,8 @@ StackedBarChart.prototype.updateVis = function(){
         });
     vis.start_text = vis.group.append("text")
         .attr("class", "start-vis-text")
-        .attr("x", vis.width/2)
-        .attr("y", -166)
+        .attr("x", 150)
+        .attr("y", -vis.height*1.5 + 36)
         .attr("text-anchor", "middle")
         .text("GO")
         .attr("fill", "white")
@@ -220,12 +220,7 @@ StackedBarChart.prototype.start = function(){
     vis.group
         .transition()
         .duration(1000)
-		.attr("transform", function() {
-			if ($(window).height() <= 676) {
-				return "translate(" + vis.margin.left + "," + (timeline.height + 100) + ")"; }
-			else {
-				return "translate(" + vis.margin.left + "," + (timeline.height + 180) + ")"; }
-		});
+        .attr("transform", "translate(" + vis.margin.left + "," + (timeline.height + $(window).height()*.15) + ")");
 
     vis.svg.selectAll(".bar")
         .transition()
@@ -242,7 +237,7 @@ StackedBarChart.prototype.start = function(){
         .delay(500)
         .duration(1000)
         .attr("transform", "translate(" + (timeline.width + 80) + "," +
-            (-vis.height - 100) + ") scale(0.8)");
+            (-gauges.coffin_civilians.height*.77) + ") scale(0.8)");
 
     timeline.selectionChanged(sbc.brush.extent());
     timeline.group.transition().delay(1000).duration(1000).attr("opacity", 1);

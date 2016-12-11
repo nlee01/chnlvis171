@@ -30,6 +30,10 @@ body {
 #nav-s1:hover, #nav-s2:hover, #nav-s3:hover, #nav-s4:hover, #nav-s5:hover, #nav-s6:hover, #nav-s7:hover, #nav-s8:hover, #nav-s9:hover {
     cursor: pointer;
 }
+/*$PARAGRAPH FADEIN*/
+.p1, .p2, .p3 {
+    display: none;
+}
 /*$LOADING*/
 
 .loading {
@@ -194,8 +198,8 @@ video#title-video {
 }
 #s3 .buffer {
     padding-top: 30px;
-    padding-left: 200px;
-    padding-right: 200px;
+    padding-left: 16vw;
+    padding-right: 16vw;
 }
 #s3 .line {
     margin: auto;
@@ -208,9 +212,6 @@ video#title-video {
 }
 #s3 h1 {
     padding-bottom: 20px;
-}
-#s3 #p1, #s3 #p2, #s3 #p3{
-    display: none;
 }
 /*$FOUR*/
 
@@ -265,17 +266,15 @@ video#title-video {
 }
 
 /*$SEVEN*/
-/*#s7 svg {*/
-    /*width: 1100px;*/
-    /*height: 600px;*/
-/*}*/
+
 #s7 {
     color: white;
 }
+.start-vis {
+    animation: blinker 1s linear infinite;
+}
 .start-vis:hover {
     cursor: pointer;
-    /*fill: white;*/
-    /*opacity: 0.5;*/
 }
 .start-vis-text {
     animation: blinker 1s linear infinite;
@@ -333,6 +332,18 @@ video#title-video {
 }
 #s8 .buffer, #s9 .buffer {
     padding-top: 70px;
-    padding-left: 200px;
-    padding-right: 200px;
+    padding-left: 16vw;
+    padding-right: 16vw;
+}
+#s8 h1, #s9 h1 {
+    padding-bottom: 20px;
+}
+#s8 .line {
+    margin: auto;
+    left: 50%;
+    background-color: white;
+    height: 1px;
+    width: 20vw;
+    margin-top: 30px;
+    margin-bottom: 30px
 }

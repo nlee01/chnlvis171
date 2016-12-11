@@ -88,8 +88,8 @@ Gauges.prototype.initVis = function() {
 
     vis.group = vis.svg.append("g")
         .attr("class", "group")
-        .attr("transform", "translate(" + ($(window).width()*.23) + "," +
-            -130 + ") scale(0.7)");
+        .attr("transform", "translate(" + (timeline.width*.66) + "," +
+            ($(window).height()/2 - vis.coffin_civilians.height*1.7) + ") scale(0.7)");
 
     vis.g1 = vis.group.append("g")
         .attr("class", "sub-group")
@@ -222,7 +222,6 @@ Gauges.prototype.initVis = function() {
         .text("Civilian Deaths");
     vis.svg.append("text")
         .attr("class", "gauge-titles gauge-subtitle")
-        // .attr("x", $(window).width()*.525)
         .attr("y", 50)
         .attr("fill", "white")
         .text("Jan '89 to Jan '90")

@@ -9,7 +9,7 @@ var parseDate = d3.time.format("%Y").parse;
 var colorScale = d3.scale.category20();
 
 // Variables for the visualization instances
-var sbc, timeline;
+var sbc, timeline, gauges;
 
 // Variable for the color scheme
 

@@ -1,6 +1,6 @@
 // LANDING.JS FOR LANDING PAGE MANIPULATION
 $(document).ready(function() {
-    fire("#s7");
+    fire("#s1");
     for (var i = 1; i <= 9; i++) {
         var section = "#s" + parseInt(i);
         bind(section);

@@ -10,7 +10,7 @@ function bind(section) {
     var prev = "#s" + (parseInt(section.substring(2, section.length)) - 1).toString();
     var next = "#s" + (parseInt(section.substring(2, section.length)) + 1).toString();
     if (section == "#s1" || section == "#s2") {
-        $(section).find(".title").click(function() { fire(next); });
+        $(section).find(".title").click(function() { $(section).find(":header, img, p").css("opacity", 1); fire(next); });
     }
     $(section).find(".prev-lg").click(function() { fire(prev); });
     if (section == "#s9") { $(section).find(".next-lg").click(function() { fire("#s1"); }); }
@@ -21,6 +21,7 @@ function fire(section) {
     $(".section").fadeOut(1000);
     if (section != "#s1" && section != "#s2" && section != "#s3" && section != "#s8" && section != "#s9") {
         $(q).fadeIn(1000);
+        $(q).find(":header, img, p").css("opacity", 1);
         $(q).click(function() { $(q).fadeOut(1000); $(section).fadeIn(1000); go(section); });
     }
     else { setTimeout(function() { $(section).fadeIn(1000); go(section); }, 1000); }

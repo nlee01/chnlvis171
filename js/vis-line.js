@@ -98,7 +98,7 @@ LineChart.prototype.initVis = function(){
         .attr("class", "preview preview-title0")
         .attr("x", vis.width/2 + vis.margin.left)
         .attr("y", vis.height/2 - vis.margin.bottom - 5)
-        .text("Major Conflicts")
+        .text("What's Happened?")
         .attr("opacity", 0);
     vis.previewsubtitle = vis.svg.append("text")
         .attr("class", "preview preview-subtitle0")

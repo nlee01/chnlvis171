@@ -1,6 +1,6 @@
 // LANDING.JS FOR LANDING PAGE MANIPULATION
 $(document).ready(function() {
-    fire("#s1");
+    fire("#s5");
     for (var i = 1; i <= 9; i++) {
         var section = "#s" + parseInt(i);
         bind(section);
@@ -25,9 +25,10 @@ function fire(section) {
     }
     else { setTimeout(function() { $(section).fadeIn(1000); go(section); }, 1000); }
 
+    if (section == "#s3") { player.pause(); }
 
     function go(section) {
-        if (section == "#s1") { $(".navbar-xs").hide(); }
+        if (section == "#s1") { $(".navbar-xs").hide(); $(section).find(":header, img, p").css("opacity", 1); }
         if (section == "#s2") {
             $(".navbar-xs").hide();
             $(".title").find(":header, img, p").css("opacity", 0);
@@ -37,6 +38,11 @@ function fire(section) {
             var currentNav = "#nav-" + section.substring(1, section.length);
             setNav(currentNav);
             $(".navbar-xs").fadeIn(1000);
+            if (section == "#s3") {
+                setTimeout(function() { $("#s3").find("#p1").fadeIn(500); }, 1000);
+                setTimeout(function() { $("#s3").find("#p2").fadeIn(500); }, 1500);
+                setTimeout(function() { $("#s3").find("#p3").fadeIn(500); }, 2000);
+            }
             if (section == "#s6") { stackedareachart.updateVis(); }
         }
         setTimeout(function() {

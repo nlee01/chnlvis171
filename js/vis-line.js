@@ -98,7 +98,7 @@ LineChart.prototype.initVis = function(){
         .attr("class", "preview preview-title0")
         .attr("x", vis.width/2 + vis.margin.left)
         .attr("y", vis.height/2 - vis.margin.bottom - 5)
-        .text("Conflicts over time")
+        .text("Major Conflicts")
         .attr("opacity", 0);
     vis.previewsubtitle = vis.svg.append("text")
         .attr("class", "preview preview-subtitle0")
@@ -242,7 +242,7 @@ LineChart.prototype.updateVis = function(){
         .attr("x", vis.width/2 + vis.margin.left)
         .attr("y", vis.margin.top + vis.margin.bottom + 25)
         .text(function(d) {
-            return "Total Deaths: " + d3.format(',')(d.Total);
+            return d3.format(',')(d.Total) + " Total Deaths";
         });
     vis.svg.selectAll("text.preview-subtitle")
         .data(vis.displayData)
@@ -268,6 +268,18 @@ LineChart.prototype.updateVis = function(){
         .attr("x", vis.width/2 + vis.margin.left)
         .attr("y", vis.margin.top + vis.margin.bottom + 70)
         .text(function(d) { return d.headline; });
+    vis.svg.selectAll("text.headline-subtitle")
+        .data(vis.displayData)
+        .enter().append("text")
+        .attr("class", "headline-subtitle")
+        .attr("text-anchor", function() {
+            if ($(window).width() < 700) { return "middle"; }
+            else { return "left"; }
+        })
+        .attr("id", function(d) { return "headline-subtitle-" + d.year.getFullYear(); })
+        .attr("x", vis.width/2 + vis.margin.left)
+        .attr("y", vis.margin.top + vis.margin.bottom + 107)
+        .text(function(d) { return d.news_date; });
 
     vis.svg.selectAll("text.content")
         .data(vis.displayData)
@@ -276,8 +288,7 @@ LineChart.prototype.updateVis = function(){
         .attr("class", "wrap content")
         .attr("id", function(d) { return "wrap-content-" + d.year.getFullYear(); })
         .attr("x", vis.width/2 + vis.margin.left)
-        .attr("y", vis.margin.top + vis.margin.bottom + 110)
-        .attr("font-size", 11)
+        .attr("y", vis.margin.top + vis.margin.bottom + 140)
         .text(function(d) { return d.content; });
 
     vis.svg.selectAll("text.source")
@@ -289,9 +300,22 @@ LineChart.prototype.updateVis = function(){
         .attr("x", vis.width/2 + vis.margin.left)
         .attr("y", vis.height*3/5)
         .attr("font-size", 11)
-        .text(function(d) { return "Source: " + d.source_name; })
+        .text(function(d) { return "See this article on " + d.source_name; })
         .on("click", function(d) {
             window.open(d.source);
+        });
+    vis.svg.selectAll("text.source-more")
+        .data(vis.displayData)
+        .enter()
+        .append("svg:text")
+        .attr("class", "wrap source-more")
+        .attr("id", function(d) { return "wrap-source-more-" + d.year.getFullYear(); })
+        .attr("x", vis.width/2 + vis.margin.left)
+        .attr("y", vis.height*3/5 + 20)
+        .attr("font-size", 11)
+        .text(function(d) { return "[see other major conflicts in " + d.year.getFullYear() + "]"; })
+        .on("click", function(d) {
+            window.open("https://en.wikipedia.org/wiki/Category:Conflicts_in_" + d.year.getFullYear());
         });
     vis.svg.selectAll(".preview-image")
         .data(vis.displayData)
@@ -332,14 +356,15 @@ LineChart.prototype.updateVis = function(){
                 view(d.year.getFullYear());
             })
             .on("mouseout", function() {
-                vis.group.selectAll(".point").transition().delay(3000).attr("opacity", 1);
-                vis.group.select(".line").transition().delay(3000).attr("opacity", 1);
+                vis.group.selectAll(".point").transition().delay(1000).attr("opacity", 1);
+                vis.group.select(".line").transition().delay(1000).attr("opacity", 1);
             });
     }, 2000);
 
     $(".preview-title").hide();
     $(".preview-subtitle").hide();
     $(".headline").hide();
+    $(".headline-subtitle").hide();
     $(".wrap").hide();
     $(".preview-image").hide();
     vis.line
@@ -359,9 +384,12 @@ LineChart.prototype.updateVis = function(){
         $("#preview-title-" + year).fadeIn(500);
         $(".headline").fadeOut(500);
         $("#headline-" + year).fadeIn(500);
+        $(".headline-subtitle").fadeOut(500);
+        $("#headline-subtitle-" + year).fadeIn(500);
         $(".wrap").fadeOut(500);
         $("#wrap-content-" + year).fadeIn(500);
         $("#wrap-source-" + year).fadeIn(500);
+        $("#wrap-source-more-" + year).fadeIn(500);
         function alreadyWrapped(y) {
             if (vis.wrapped.indexOf(y) == -1) {
                 d3plus.textwrap()

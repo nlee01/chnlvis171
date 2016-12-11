@@ -2,7 +2,6 @@
 
 body {
     background-color: black;
-    /*overflow: hidden;*/
     margin: 0;
 }
 @keyframes blinker {
@@ -194,11 +193,25 @@ video#title-video {
     color: white;
 }
 #s3 .buffer {
-    padding-top: 70px;
+    padding-top: 30px;
     padding-left: 200px;
     padding-right: 200px;
 }
-
+#s3 .line {
+    margin: auto;
+    left: 50%;
+    background-color: white;
+    height: 1px;
+    width: 20vw;
+    margin-top: 30px;
+    margin-bottom: 30px
+}
+#s3 h1 {
+    padding-bottom: 20px;
+}
+#s3 #p1, #s3 #p2, #s3 #p3{
+    display: none;
+}
 /*$FOUR*/
 
 .preview-title0, .preview-title {
@@ -206,10 +219,15 @@ video#title-video {
     fill: black;
     font-size: 20px;
 }
-.preview-subtitle0, .preview-subtitle {
+.preview-subtitle0 {
     text-anchor: middle;
     fill: black;
-    font-size: 10px;
+    font-size: 11px;
+}
+.preview-subtitle {
+    text-anchor: middle;
+    fill: black;
+    font-size: 13px;
 }
 .preview-subtitle0 {
     animation: blinker 1s linear infinite;
@@ -219,11 +237,19 @@ video#title-video {
     fill: black;
     font-size: 18px;
 }
-.source {
+.headline-subtitle {
+    text-anchor: left;
+    fill: black;
+    font-size: 13px;
+}
+.source, .source-more {
     fill: steelblue;
 }
-.source:hover {
+.source:hover, .source-more {
     cursor: pointer;
+}
+.content {
+    font-size: 12px;
 }
 
 /*$SIX*/
